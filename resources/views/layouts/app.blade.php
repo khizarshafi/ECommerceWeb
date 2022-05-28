@@ -30,7 +30,7 @@
 	@include('includes.front.header')
 
 	<main id="main">
-		<div class="container add">
+		<div class="container">
             @yield('content')
 		</div>
 
