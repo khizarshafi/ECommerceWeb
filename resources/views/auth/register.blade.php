@@ -12,18 +12,29 @@
 					<div class=" main-content-area">
 						<div class="wrap-login-item ">
 							<div class="register-form form-item ">
-								<form class="form-stl" action="#" name="frm-login" method="get" >
+								<form class="form-stl" action="{{ route('register') }}" name="frm-login" method="post" >
+									@csrf
 									<fieldset class="wrap-title">
 										<h3 class="form-title">Create an account</h3>
 										<h4 class="form-subtitle">Personal infomation</h4>
 									</fieldset>									
 									<fieldset class="wrap-input">
 										<label for="frm-reg-lname">Name*</label>
-										<input type="text" id="frm-reg-lname" name="reg-lname" placeholder="Last name*">
+										<input type="text" id="frm-reg-lname" class="@error('name') is-invalid @enderror" name="name" placeholder="Your Name" required>
+										@error('name')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
 									</fieldset>
 									<fieldset class="wrap-input">
 										<label for="frm-reg-email">Email Address*</label>
-										<input type="email" id="frm-reg-email" name="reg-email" placeholder="Email address">
+										<input type="email" id="frm-reg-email" class="@error('email') is-invalid @enderror" name="email" placeholder="Email address" value="{{ old('email') }}" required autocomplete="email">
+										@error('email')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
 									</fieldset>
 									<fieldset class="wrap-functions ">
 										<label class="remember-field">
@@ -35,11 +46,16 @@
 									</fieldset>
 									<fieldset class="wrap-input item-width-in-half left-item ">
 										<label for="frm-reg-pass">Password *</label>
-										<input type="text" id="frm-reg-pass" name="reg-pass" placeholder="Password">
+										<input type="text" id="frm-reg-pass" name="password" placeholder="Password" class="@error('password') is-invalid @enderror"  required autocomplete="new-password">
+										@error('password')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
 									</fieldset>
 									<fieldset class="wrap-input item-width-in-half ">
 										<label for="frm-reg-cfpass">Confirm Password *</label>
-										<input type="text" id="frm-reg-cfpass" name="reg-cfpass" placeholder="Confirm Password">
+										<input type="text" id="frm-reg-cfpass" name="password_confirmation" placeholder="Confirm Password"  required autocomplete="new-password">
 									</fieldset>
 									<input type="submit" class="btn btn-sign" value="Register" name="register">
 								</form>
