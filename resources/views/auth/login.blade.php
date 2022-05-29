@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+@section('title','Login')
 <div class="wrap-breadcrumb">
 				<ul>
 					<li class="item-link"><a href="#" class="link">home</a></li>

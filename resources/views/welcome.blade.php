@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+@section('title','Home')
 @include('includes.front.slider')
 @include('includes.front.banner')
 
